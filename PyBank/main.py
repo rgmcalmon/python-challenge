@@ -3,6 +3,7 @@ import os
 
 months = []
 profits = []
+output = []
 
 # Read in csv file
 csv_path = os.path.join("Resources","budget_data.csv")
@@ -27,11 +28,20 @@ max_month = months[profits.index(max_increase)]
 max_decrease = min(profits)
 min_month = months[profits.index(max_decrease)]
 
-# Give financial analysis
-print("Financial analysis:")
-print("----------------------")
-print(f"Total months: {tot_months}")
-print(f"Total: ${net_profit}")
-print(f"Average Change: ${avg_changes}")
-print(f"Greatest Increase in Profits: {max_month} (${max_increase})")
-print(f"Greatest Decrease in Profits: {min_month} (${max_decrease})")
+# Create financial analysis
+output.append("Financial analysis:")
+output.append("----------------------")
+output.append(f"Total months: {tot_months}")
+output.append(f"Total: ${net_profit}")
+output.append(f"Average Change: ${avg_changes}")
+output.append(f"Greatest Increase in Profits: {max_month} (${max_increase})")
+output.append(f"Greatest Decrease in Profits: {min_month} (${max_decrease})")
+
+# Print analysis
+for line in output:
+    print(line)
+
+# Write to file
+with open("output.txt", 'w') as of:
+    for line in output:
+        of.write(line+"\n")
