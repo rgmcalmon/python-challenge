@@ -22,7 +22,7 @@ with open(csv_path,newline='') as csv_file:
 # Total months
 tot_months = len(profits)
 net_profit = sum(profits)
-avg_changes = round(net_profit / tot_months, 2)
+avg_changes = round((profits[-1] - profits[0])/(tot_months - 1), 2)
 max_increase = max(profits)
 max_month = months[profits.index(max_increase)]
 max_decrease = min(profits)
